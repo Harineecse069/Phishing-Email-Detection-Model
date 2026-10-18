@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Email Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🛡 Phishing Email Detector</h1>
+    <p>Intelligent Email Security Analysis</p>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>Analyze an Email</h2>
+        <p>Enter the subject and content of an email below.</p>
+
+        <form id="emailForm">
+            <label for="subject">Email Subject</label>
+            <input
+                type="text"
+                id="subject"
+                placeholder="Enter email subject"
+                required
+            >
+
+            <label for="emailContent">Email Content</label>
+            <textarea
+                id="emailContent"
+                rows="8"
+                placeholder="Paste the email content here..."
+                required
+            ></textarea>
+
+            <button type="submit">Analyze Email</button>
+            <button type="button" id="clearButton" class="secondary">
+                Clear
+            </button>
+        </form>
+
+        <p class="notice">
+            Demo only: do not paste passwords, private emails, or sensitive information.
+        </p>
+    </section>
+
+    <section class="dashboard">
+        <div class="stat-card">
+            <h3>Emails Analyzed</h3>
+            <p id="totalEmails">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Phishing Detected</h3>
+            <p id="phishingCount">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Safe Classified</h3>
+            <p id="safeCount">0</p>
+        </div>
+    </section>
+
+    <section class="card" id="resultSection" hidden>
+        <h2>Analysis Result</h2>
+
+        <div id="resultBadge"></div>
+
+        <p id="riskScore"></p>
+
+        <h3>Detection Details</h3>
+        <ul id="findings"></ul>
+
+        <p class="notice">
+            This result is based on simple rules, not a trained machine learning model.
+            A safe classification does not guarantee that an email is legitimate.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Model Evaluation Demonstration</h2>
+
+        <p>
+            The following metrics are calculated on a small, built-in,
+            rule-labeled demonstration dataset. They are not evidence of
+            real-world machine learning performance.
+        </p>
+
+        <button type="button" id="evaluateButton">
+            Evaluate Demo Dataset
+        </button>
+
+        <div id="evaluationResults" hidden>
+            <h3>Evaluation Metrics</h3>
+
+            <div class="metrics">
+                <div>
+                    <span>Accuracy</span>
+                    <strong id="accuracy">-</strong>
+                </div>
+
+                <div>
+                    <span>Precision</span>
+                    <strong id="precision">-</strong>
+                </div>
+
+                <div>
+                    <span>Recall</span>
+                    <strong id="recall">-</strong>
+                </div>
+            </div>
+
+            <h3>Confusion Matrix</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Actual / Predicted</th>
+                        <th>Phishing</th>
+                        <th>Safe</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th>Phishing</th>
+                        <td id="tp">0</td>
+                        <td id="fn">0</td>
+                    </tr>
+
+                    <tr>
+                        <th>Safe</th>
+                        <td id="fp">0</td>
+                        <td id="tn">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Analysis History</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Classification</th>
+                        <th>Risk Score</th>
+                    </tr>
+                </thead>
+
+                <tbody id="historyBody">
+                    <tr>
+                        <td colspan="3">No emails analyzed yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Phishing Email Detection Mini Project | HTML, CSS & JavaScript</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
